@@ -7,6 +7,8 @@ using OpenClawTray.FunctionalUI;
 using OpenClawTray.FunctionalUI.Core;
 using OpenClawTray.Chat.Explorations;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using static OpenClawTray.FunctionalUI.Factories;
 using static OpenClawTray.FunctionalUI.Core.Theme;
@@ -402,15 +404,21 @@ public sealed class OpenClawChatRoot : Component
                 OnStopSpeaking: _onStopSpeaking,
                 ScrollToBottomToken: scrollToBottomToken.Value)));
 
-        // Distinct list of channel labels (= thread titles) — feeds the
-        // composer's first ComboBox so the user can switch chats from the
-        // composer, not just the side rail.  Exclude cron sessions which
-        // are automated/background and shouldn't appear in the chat switcher.
-        var channelTitles = snapshot.Threads
+        // Session list for the composer dropdown — grouped by agent, keyed by
+        // ID so every session gets its own entry regardless of display name.
+        // Exclude cron sessions which are automated/background.
+        var channelGroups = snapshot.Threads
             .Where(t => !string.IsNullOrEmpty(t.Title)
                      && !t.Id.Contains(":cron:", StringComparison.Ordinal))
-            .Select(t => t.Title)
-            .Distinct(StringComparer.Ordinal)
+            .GroupBy(t =>
+            {
+                // Parse agent ID from key like "agent:{agentId}:{slot}"
+                var parts = (t.Id ?? "").Split(':');
+                return parts.Length >= 3 && parts[0] == "agent" ? parts[1] : "other";
+            })
+            .Select(g => new ChannelGroup(
+                AgentLabel: char.ToUpper(g.Key[0]) + g.Key[1..],
+                Sessions: g.Select(t => (Id: t.Id, Title: t.Title!)).ToArray()))
             .ToArray();
 
         Element composer = (effectiveThread is not null && !suppressComposer)
@@ -419,7 +427,8 @@ public sealed class OpenClawChatRoot : Component
                 TurnActive: turnActiveOverride,
                 PendingPermission: pendingPermissionOverride,
                 ChannelLabel: effectiveThread.Title ?? "Main session",
-                AvailableChannels: channelTitles,
+                ChannelId: effectiveThread.Id,
+                AvailableChannels: channelGroups,
                 AvailableModels: snapshot.AvailableModels,
                 CurrentModel: effectiveThread.Model,
                 CurrentThinkingLevel: effectiveThread.ThinkingLevel,
@@ -430,14 +439,10 @@ public sealed class OpenClawChatRoot : Component
                 },
                 OnStop: () => OnStop(effectiveThread.Id),
                 OnPermissionResponse: (rid, allow) => OnPermission(effectiveThread.Id, rid, allow),
-                OnChannelChanged: title =>
+                OnChannelChanged: id =>
                 {
-                    var match = Array.Find(snapshot.Threads, t => t.Title == title);
-                    if (match is not null)
-                    {
-                        selectedIdState.Set(match.Id);
-                        selectedIdRef.Current = match.Id;
-                    }
+                    selectedIdState.Set(id);
+                    selectedIdRef.Current = id;
                 },
                 OnModelChanged: model => RunFireAndForget(ct => _provider.SetModelAsync(effectiveThread.Id, model, ct)),
                 OnThinkingLevelChanged: level => RunFireAndForget(ct => _provider.SetThinkingLevelAsync(effectiveThread.Id, level, ct)),
