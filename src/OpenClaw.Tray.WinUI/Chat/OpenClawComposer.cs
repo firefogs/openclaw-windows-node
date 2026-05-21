@@ -195,6 +195,7 @@ public sealed class OpenClawComposer : Component<OpenClawComposerProps>
         {
             "connected" => LocalizationHelper.GetString("Chat_Composer_Placeholder_Connected"),
             "connecting" => LocalizationHelper.GetString("Chat_Composer_Placeholder_Connecting"),
+            "incompatible-gateway" => LocalizationHelper.GetString("Chat_Composer_Placeholder_IncompatibleGateway"),
             _ => LocalizationHelper.GetString("Chat_Composer_Placeholder_NotConnected")
         };
 

@@ -2163,14 +2163,21 @@ public sealed class OpenClawChatDataProvider : IChatDataProvider
 
         var defaultThreadId = ResolveDefaultThreadIdLocked();
 
-        var connectionLabel = _status switch
-        {
-            ConnectionStatus.Connected => "Connected",
-            ConnectionStatus.Connecting => "Connecting…",
-            ConnectionStatus.Disconnected => "Disconnected",
-            ConnectionStatus.Error => "Disconnected — error",
-            _ => _status.ToString()
-        };
+        // When the gateway is connected and the handshake completed but no
+        // session key was advertised, distinguish this from a normal "Connected"
+        // state so the UI can surface a clear compatibility warning.
+        var connectionLabel = (_status == ConnectionStatus.Connected
+                               && _bridge.HasHandshakeSnapshot
+                               && string.IsNullOrWhiteSpace(composeKey))
+            ? "Incompatible gateway"
+            : _status switch
+            {
+                ConnectionStatus.Connected => "Connected",
+                ConnectionStatus.Connecting => "Connecting…",
+                ConnectionStatus.Disconnected => "Disconnected",
+                ConnectionStatus.Error => "Disconnected — error",
+                _ => _status.ToString()
+            };
 
         var composeTarget = composeReady
             ? new ChatComposeTarget(composeKey, true)

@@ -275,7 +275,9 @@ public sealed class OpenClawChatRoot : Component
         var connectedRaw = snapshot.ConnectionStatus;
         var hostConnected = connectedRaw is not null
             && connectedRaw.StartsWith("Connected", StringComparison.OrdinalIgnoreCase);
-        var connState = hostConnected ? "connected"
+        var connState = (connectedRaw is not null && connectedRaw.StartsWith("Incompatible", StringComparison.OrdinalIgnoreCase))
+            ? "incompatible-gateway"
+            : hostConnected ? "connected"
             : (connectedRaw is not null && connectedRaw.StartsWith("Connecting", StringComparison.OrdinalIgnoreCase))
                 ? "connecting"
                 : "disconnected";

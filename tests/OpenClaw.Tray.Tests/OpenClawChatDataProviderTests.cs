@@ -460,6 +460,43 @@ public class OpenClawChatDataProviderTests
         Assert.Equal("agent:main:main", snap.DefaultThreadId);
     }
 
+    [Fact]
+    public async Task LoadAsync_HandshakeComplete_NoSessionKey_SignalsIncompatibleGateway()
+    {
+        // When the gateway completes the handshake but does not advertise
+        // a mainSessionKey (or sessionDefaults.mainKey), the provider must surface
+        // an "Incompatible gateway" connection label and a NotReady compose target
+        // so the UI can show a clear "gateway update required" message rather than
+        // silently blocking send. Relates to issue #459.
+        var (bridge, provider, _, _) = CreateProvider();
+        bridge.HasHandshakeSnapshot = true;
+        bridge.MainSessionKey = null;   // incompatible gateway: no session key
+        bridge.RaiseStatus(ConnectionStatus.Connected);
+        var snap = await provider.LoadAsync();
+
+        Assert.Equal("Incompatible gateway", snap.ConnectionStatus);
+        Assert.False(snap.ComposeTarget.IsReady);
+        Assert.Null(snap.ComposeTarget.SessionKey);
+    }
+
+    [Fact]
+    public async Task StatusChanged_IncompatibleGateway_IsReflectedInSnapshotConnectionLabel()
+    {
+        // Raise Connected with handshake present but no session key; the snapshot
+        // must use "Incompatible gateway" rather than the plain "Connected" label.
+        var (bridge, provider, snapshots, _) = CreateProvider();
+        bridge.HasHandshakeSnapshot = true;
+        bridge.MainSessionKey = null;
+        await provider.LoadAsync();
+        snapshots.Clear();
+
+        bridge.RaiseStatus(ConnectionStatus.Connected);
+
+        Assert.NotEmpty(snapshots);
+        Assert.Equal("Incompatible gateway", snapshots[^1].ConnectionStatus);
+        Assert.False(snapshots[^1].ComposeTarget.IsReady);
+    }
+
     // ── Parity additions: streaming, lifecycle, reasoning, history, abort ──
 
     [Fact]

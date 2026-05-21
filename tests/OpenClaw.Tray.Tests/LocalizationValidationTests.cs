@@ -104,6 +104,8 @@ public class LocalizationValidationTests
         "PermissionsPage_TtsStatus_DefaultProviderFormat",
         "PermissionsPage_TtsStatus_ElevenLabsSaved",
         "PermissionsPage_McpStatus_TokenReadFailedFormat",
+        // Chat runtime warning seeded English-only until translations land.
+        "Chat_Composer_Placeholder_IncompatibleGateway",
         // InstancesPage / ConnectionPage new strings — seeded English across
         // all locales until translations land. Same precedent as the
         // PermissionsPage runtime keys above. The Manage expander body reuses

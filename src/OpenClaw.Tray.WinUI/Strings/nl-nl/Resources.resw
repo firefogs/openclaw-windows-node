@@ -2830,6 +2830,9 @@ Voer op uw gateway-host (Mac/Linux) uit:
   <data name="Chat_Composer_Placeholder_NotConnected" xml:space="preserve">
     <value>Niet verbonden</value>
   </data>
+  <data name="Chat_Composer_Placeholder_IncompatibleGateway" xml:space="preserve">
+    <value>Gateway update required — incompatible version</value>
+  </data>
   <data name="Chat_Composer_Tooltip_Attach" xml:space="preserve">
     <value>Bijvoegen</value>
   </data>

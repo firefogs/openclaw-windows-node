@@ -2829,6 +2829,9 @@
   <data name="Chat_Composer_Placeholder_NotConnected" xml:space="preserve">
     <value>未连接</value>
   </data>
+  <data name="Chat_Composer_Placeholder_IncompatibleGateway" xml:space="preserve">
+    <value>Gateway update required — incompatible version</value>
+  </data>
   <data name="Chat_Composer_Tooltip_Attach" xml:space="preserve">
     <value>附加</value>
   </data>
