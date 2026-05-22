@@ -2413,7 +2413,7 @@
     <value>Windows å†…ç½®è¯­éŸ³</value>
   </data>
   <data name="VoiceSettingsPage_PageTitle.Text" xml:space="preserve">
-    <value>🎙️ 语音和音频</value>
+    <value>语音和音频</value>
   </data>
   <data name="VoiceSettingsPage_PageDescription.Text" xml:space="preserve">
     <value>é…ç½®è¯­éŸ³è½¬æ–‡å­—å’Œè¯­éŸ³äº¤äº’è®¾ç½®ã€‚æ‰€æœ‰è¯­éŸ³å¤„ç†å‡åœ¨æœ¬æœºæœ¬åœ°è¿è¡Œã€‚</value>
@@ -2491,7 +2491,7 @@
     <value>éŸ³é¢‘åé¦ˆå£°éŸ³</value>
   </data>
   <data name="VoiceSettingsPage_VoiceHeader.Text" xml:space="preserve">
-    <value>🔊 Companion 语音</value>
+    <value>Companion 语音</value>
   </data>
   <data name="VoiceSettingsPage_VoiceDescription.Text" xml:space="preserve">
     <value>é€‰æ‹©æœ—è¯»å“åº”æ—¶ä½¿ç”¨çš„è¯­éŸ³ã€‚</value>
@@ -2518,7 +2518,10 @@
     <value>åˆ é™¤</value>
   </data>
   <data name="VoiceSettingsPage_PiperPreviewButton.Content" xml:space="preserve">
-    <value>▶ 预览</value>
+    <value>预览</value>
+  </data>
+  <data name="VoiceSettingsPage_PiperPreviewButtonContent" xml:space="preserve">
+    <value>预览</value>
   </data>
   <data name="VoiceSettingsPage_PiperInfoText.Text" xml:space="preserve">
     <value>è¯­éŸ³ä»Ž sherpa-onnx é¡¹ç›®çš„ GitHub å‘å¸ƒç‰ˆä¸‹è½½(ä½Žè´¨é‡çº¦ 25 MB,é«˜è´¨é‡æœ€é«˜çº¦ 150 MB)ã€‚å®ƒä»¬å®Œå…¨åœ¨æœ¬æœºè¿è¡Œ;æ— éŸ³é¢‘ç¦»å¼€æ‚¨çš„è®¾å¤‡ã€‚</value>
@@ -2527,7 +2530,7 @@
     <value>è¯­éŸ³</value>
   </data>
   <data name="VoiceSettingsPage_PreviewVoiceButton.Content" xml:space="preserve">
-    <value>▶ 预览语音</value>
+    <value>预览语音</value>
   </data>
   <data name="VoiceSettingsPage_ElevenLabsApiKeyBox.Header" xml:space="preserve">
     <value>API å¯†é’¥</value>
@@ -2560,7 +2563,7 @@
     <value>ä¸‹è½½å·²å–æ¶ˆ</value>
   </data>
   <data name="VoiceSettingsPage_StatusError" xml:space="preserve">
-    <value>❌ 操作失败(参见 Debug 日志)</value>
+    <value>操作失败(参见 Debug 日志)</value>
   </data>
   <data name="VoiceSettingsPage_PiperButtonDownloaded" xml:space="preserve">
     <value>å·²ä¸‹è½½</value>
@@ -2611,7 +2614,7 @@
     <value>åŠ è½½è¯­éŸ³æ—¶å‡ºé”™(å‚è§ Debug æ—¥å¿—)ã€‚</value>
   </data>
   <data name="VoiceSettingsPage_PreviewButtonPlaying" xml:space="preserve">
-    <value>▶ 正在播放...</value>
+    <value>正在播放...</value>
   </data>
   <data name="VoiceOverlayWindow_HeaderText.Text" xml:space="preserve">
     <value>Companion è¯­éŸ³</value>
@@ -2716,7 +2719,7 @@
     <value>ä¸‹è½½è¯­éŸ³</value>
   </data>
   <data name="VoiceSettingsPage_PreviewVoiceButtonContent" xml:space="preserve">
-    <value>▶ 预览语音</value>
+    <value>预览语音</value>
   </data>
   <data name="DebugPage_TextBlock_OverridesHeader.Text" xml:space="preserve">
     <value>è°ƒè¯•è¦†ç›–</value>
