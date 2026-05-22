@@ -2166,6 +2166,12 @@ Sur votre hôte passerelle (Mac/Linux), exécutez :
   <data name="TitleText.Text" xml:space="preserve">
     <value>OpenClaw Windows Companion</value>
   </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Basculer le volet de navigation</value>
+  </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Basculer le volet de navigation</value>
+  </data>
   <data name="TitleStatusText.Text" xml:space="preserve">
     <value>Déconnecté</value>
   </data>

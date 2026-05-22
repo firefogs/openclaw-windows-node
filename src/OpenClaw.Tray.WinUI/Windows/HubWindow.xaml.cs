@@ -178,9 +178,19 @@ public sealed partial class HubWindow : WindowEx
         NavView.OpenPaneLength = Math.Clamp(desired, minPane, maxPane);
     }
 
+    private void OnNavContentHostSizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        NavContentClip.Rect = new global::Windows.Foundation.Rect(0, 0, e.NewSize.Width, e.NewSize.Height);
+    }
+
     private void OnTitleBarStatusTapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
     {
         NavigateTo("connection");
+    }
+
+    private void OnNavPaneToggleButtonClick(object sender, RoutedEventArgs e)
+    {
+        NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }
 
     /// <summary>

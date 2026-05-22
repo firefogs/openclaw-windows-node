@@ -2214,6 +2214,12 @@ On your gateway host (Mac/Linux), run:
   <data name="TitleText.Text" xml:space="preserve">
     <value>OpenClaw Windows Companion</value>
   </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Toggle navigation pane</value>
+  </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Toggle navigation pane</value>
+  </data>
   <data name="TitleStatusText.Text" xml:space="preserve">
     <value>Disconnected</value>
   </data>

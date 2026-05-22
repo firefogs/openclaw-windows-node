@@ -2167,6 +2167,12 @@ Voer op uw gateway-host (Mac/Linux) uit:
   <data name="TitleText.Text" xml:space="preserve">
     <value>OpenClaw Windows Companion</value>
   </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Navigatievenster in- of uitschakelen</value>
+  </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Navigatievenster in- of uitschakelen</value>
+  </data>
   <data name="TitleStatusText.Text" xml:space="preserve">
     <value>Verbinding verbroken</value>
   </data>

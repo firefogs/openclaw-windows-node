@@ -2166,6 +2166,12 @@
   <data name="TitleText.Text" xml:space="preserve">
     <value>OpenClaw Windows Companion</value>
   </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>切换导航窗格</value>
+  </data>
+  <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>切换导航窗格</value>
+  </data>
   <data name="TitleStatusText.Text" xml:space="preserve">
     <value>å·²æ–­å¼€è¿žæŽ¥</value>
   </data>
